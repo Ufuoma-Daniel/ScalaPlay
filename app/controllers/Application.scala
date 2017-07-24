@@ -13,9 +13,25 @@ class Application extends Controller {
     Ok(views.html.home("This is my application."))
   }
 
-  def test(temp: String) = Action {
-    Ok("Testing this "+temp)
+  def numbers(num: Any) = Action {
+    Ok("The number is "+num)
   }
+
+  def test(temp: String) = Action {
+    temp match{
+      case "missing" => NotFound
+      case "bad" => BadRequest
+      case "oops" => InternalServerError("woopsie daisy")
+      case _ => Ok("Testing this "+temp)
+    }
+  }
+
+  def redirectHome() = Action {
+    Redirect("/home")
+  }
+
+  def incomplete() = TODO
+
 
 
 }
