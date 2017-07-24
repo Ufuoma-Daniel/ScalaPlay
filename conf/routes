@@ -4,7 +4,10 @@
 
 # Home page
 GET     /                           controllers.Application.index
+
+#My test Pages
 GET     /home                       controllers.Application.home
+GET     /test                       controllers.Application.test(temp: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

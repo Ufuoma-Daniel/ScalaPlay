@@ -13,4 +13,9 @@ class Application extends Controller {
     Ok(views.html.home("This is my application."))
   }
 
+  def test(temp: String) = Action {
+    Ok("Testing this "+temp)
+  }
+
+
 }
