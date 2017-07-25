@@ -57,7 +57,7 @@ class Application extends Controller {
     Redirect(routes.Application.test("yeah"))
   }
 
-  def incomplete() = TODO
+  def todo() = TODO
 
 
 

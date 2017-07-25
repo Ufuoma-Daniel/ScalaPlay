@@ -11,23 +11,6 @@
         <body>
             <h1>@request.session.get("connected")</h1>
             <h2>@request.flash.get("congrats").getOrElse("No Flash")</h2>
-
-            <ul>
-                <li><a>Home</a></li>
-                <li><a>Tome</a></li>
-                <li><a>Cone</a></li>
-                <li><a>PWN</a></li>
-            </ul>
-
-            <p> This is a test</p>
-            <p>Below is a form</p>
-            <form>
-                <input type="text" placeholder="Yahoo!"><br>
-                <input type="text" placeholder="KAHOOT!"><br>
-                <input type="text" placeholder="AND YOUU"><br>
-                <input type="text" placeholder="ok."><br>
-                <input type="button" value ="Press Me!">
-            </form>
         </body>
     </html>
 

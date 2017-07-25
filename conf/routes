@@ -5,10 +5,16 @@
 # Home page
 GET     /                           controllers.Application.index()
 
+#Default Controller
+GET      /defAbout                  controllers.Default.redirect(to = "https://www.playframework.com/")
+GET      /defError                  controllers.Default.error
+GET      /defToDo                   controllers.Default.todo
+GET      /defNotFound               controllers.Default.notFound
+
 #My test Pages
 GET     /home                       controllers.Application.home()
 GET     /misc                       controllers.Application.misc()
-GET     /flash                       controllers.Application.flash()
+GET     /flash                      controllers.Application.flash()
 GET     /cookie                     controllers.Application.cookieBoy()
 GET     /cookie2                    controllers.Application.cookieBoyUpdate()
 GET     /delcookie                  controllers.Application.deleteAllCookies()
@@ -17,7 +23,7 @@ GET     /gohome                     controllers.Application.redirectHome()
 GET     /test                       controllers.Application.test(temp: String ?= "default")
 GET     /testtwo/:temp              controllers.Application.test(temp: String)
 GET     /fixed                      controllers.Application.test(temp = "always bacon")
-GET     /incomplete                 controllers.Application.incomplete()
+GET     /todo                       controllers.Application.todo()
 GET     /numbers/$num<[a-z,0-9]+>   controllers.Application.numbers(num: String)
 
 
