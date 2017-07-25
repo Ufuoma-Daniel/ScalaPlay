@@ -3,15 +3,23 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index
+GET     /                           controllers.Application.index()
 
 #My test Pages
-GET     /home                       controllers.Application.home
+GET     /home                       controllers.Application.home()
+GET     /misc                       controllers.Application.misc()
+GET     /flash                       controllers.Application.flash()
+GET     /cookie                     controllers.Application.cookieBoy()
+GET     /cookie2                    controllers.Application.cookieBoyUpdate()
+GET     /delcookie                  controllers.Application.deleteAllCookies()
+GET     /reverse                    controllers.Application.reverse()
 GET     /gohome                     controllers.Application.redirectHome()
 GET     /test                       controllers.Application.test(temp: String ?= "default")
+GET     /testtwo/:temp              controllers.Application.test(temp: String)
 GET     /fixed                      controllers.Application.test(temp = "always bacon")
 GET     /incomplete                 controllers.Application.incomplete()
 GET     /numbers/$num<[a-z,0-9]+>   controllers.Application.numbers(num: String)
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
