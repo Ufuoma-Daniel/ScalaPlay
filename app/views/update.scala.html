@@ -1,0 +1,14 @@
+@(items: Seq[Item], form: Form[Item], formDel: Form[ItemDel])(implicit messages: Messages)
+
+@main("Item Shop") {
+  @helper.form(routes.Website.updateItem()) {
+    @helper.inputText(form("name"), 'id -> "nameID")
+    @helper.inputText(form("description"), 'id -> "descriptionID")
+    @helper.inputText(form("maker"), 'id -> "makerID")
+    @helper.inputText(form("seller"), 'id -> "sellerID")
+    @helper.inputText(form("price"), 'id -> "priceID")
+    @helper.inputText(form("image"), 'id -> "imageID")
+    <button type="submit">Update Item</button>
+  }
+
+}

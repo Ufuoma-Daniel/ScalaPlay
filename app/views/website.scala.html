@@ -1,0 +1,48 @@
+@(items: Seq[Item], form: Form[Item], formDel: Form[ItemDel])(implicit messages: Messages)
+
+@main("Item Shop") {
+  <h1>Items</h1>
+    <div>
+  <table>
+    <thead>
+      <tr><th>Name</th>
+          <th>Description</th>
+          <th>Maker</th>
+          <th>Seller</th>
+          <th>Price</th>
+          <th>Image<th>
+    </thead>
+    <tbody>
+    @for(item <- items) {
+      <tr><td>@item.name</td>
+          <td>@item.description</td>
+          <td>@item.maker</td>
+          <td>@item.seller</td>
+          <td>@item.price</td>
+          <td><img src= "@item.image" width="100" height="100"></td>
+      </tr>
+    }
+    </tbody>
+  </table>
+    </div>
+  <hr/>
+
+  @helper.form(routes.Website.createItem()) {
+      @helper.inputText(form("name"), 'id -> "nameID")
+      @helper.inputText(form("description"), 'id -> "descriptionID")
+      @helper.inputText(form("maker"), 'id -> "makerID")
+      @helper.inputText(form("seller"), 'id -> "sellerID")
+      @helper.inputText(form("price"), 'id -> "priceID")
+      @helper.inputText(form("image"), 'id -> "imageID")
+    <button type="submit">Create Item</button>
+  }
+
+    <br>
+
+    <div>
+    @helper.form(routes.Website.deleteItem()) {
+        @helper.inputText(form("name"), 'id -> "nameID")
+        <button type="submit">Delete Item</button>
+    }
+    </div>
+    }

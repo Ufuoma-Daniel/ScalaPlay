@@ -3,8 +3,38 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index
-GET     /home                       controllers.Application.home
+GET     /                           controllers.Application.index()
+
+#Website pages
+GET     /items                      controllers.Website.listItems()
+GET     /update/:index              controllers.Website.updateList(index: Int)
+POST    /items                      controllers.Website.createItem()
+POST    /items/submit               controllers.Website.deleteItem()
+POST    /update                     controllers.Website.updateItem()
+
+
+
+#Default Controller
+GET      /defAbout                  controllers.Default.redirect(to = "https://www.playframework.com/")
+GET      /defError                  controllers.Default.error
+GET      /defToDo                   controllers.Default.todo
+GET      /defNotFound               controllers.Default.notFound
+
+#My test Pages
+GET     /home                       controllers.Application.home()
+GET     /misc                       controllers.Application.misc()
+GET     /flash                      controllers.Application.flash()
+GET     /cookie                     controllers.Application.cookieBoy()
+GET     /cookie2                    controllers.Application.cookieBoyUpdate()
+GET     /delcookie                  controllers.Application.deleteAllCookies()
+GET     /reverse                    controllers.Application.reverse()
+GET     /gohome                     controllers.Application.redirectHome()
+GET     /test                       controllers.Application.test(temp: String ?= "default")
+GET     /testtwo/:temp              controllers.Application.test(temp: String)
+GET     /fixed                      controllers.Application.test(temp = "always bacon")
+GET     /todo                       controllers.Application.todo()
+GET     /numbers/$num<[a-z,0-9]+>   controllers.Application.numbers(num: String)
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -1,0 +1,17 @@
+@(message: String)(request: Request[AnyContent])(implicit flash: Flash)
+
+@main(message) {
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/home.css")">
+            <meta charset="UTF-8">
+        </head>
+
+        <body>
+            <h1>@request.session.get("connected")</h1>
+            <h2>@request.flash.get("congrats").getOrElse("No Flash")</h2>
+        </body>
+    </html>
+
+}
