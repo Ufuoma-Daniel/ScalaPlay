@@ -8,11 +8,10 @@ import play.api.mvc._
 import scala.concurrent.Future
 
 class Website @Inject()(val messagesApi: MessagesApi) extends Controller with I18nSupport {
-  
   def listItems :Action[AnyContent] = Action { implicit request =>
     Ok(views.html.website(Item.items, Item.createItemForm, ItemDel.createDelForm))
   }
-  
+
   def createItem :Action[AnyContent] = Action { implicit request =>
     val formValidationResult = Item.createItemForm.bindFromRequest
     formValidationResult.fold({ formWithErrors =>

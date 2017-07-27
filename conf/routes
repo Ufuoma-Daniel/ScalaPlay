@@ -12,7 +12,11 @@ POST    /items                      controllers.Website.createItem()
 POST    /items/submit               controllers.Website.deleteItem()
 POST    /update                     controllers.Website.updateItem()
 
-
+#MongoDB
+GET     /table                      controllers.Mongo.create()
+GET     /read/:name                 controllers.Mongo.readByName(name: String)
+GET     /table/:name                controllers.Mongo.delete(name: String)
+#GET     /update/:details            controllers.Mongo.update(details: List[String])
 
 #Default Controller
 GET      /defAbout                  controllers.Default.redirect(to = "https://www.playframework.com/")

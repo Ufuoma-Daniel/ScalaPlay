@@ -15,6 +15,13 @@ case class Item(
 
 case class ItemDel( name: String)
 
+
+object JsonFormats {
+  import play.api.libs.json.Json
+  implicit val itemFormat = Json.format[Item]
+}
+
+
 object ItemDel{
   val createDelForm = Form(
     mapping(
