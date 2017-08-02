@@ -32,16 +32,16 @@ class Mongo @Inject()(val reactiveMongoApi: ReactiveMongoApi) extends Controller
         .cursor[Item]
     }
     val futureUsersList: Future[List[Item]] = cursor.flatMap(_.collect[List]())
-    futureUsersList.map { persons => Ok(persons.head.toString)
+    futureUsersList.map { persons => Ok(persons.headOption.toString)
     }
   }
 
   def update(name: List[String]): Action[AnyContent] = Action.async {
-    val selector = BSONDocument("name" -> name.head)
+    val selector = BSONDocument("name" -> name.headOption)
 
     val modifier = BSONDocument(
       "$set" -> BSONDocument(
-        "name" -> name.head,
+        "name" -> name.headOption,
         "description" -> name(1),
         "maker" -> name(2),
         "seller" -> name(3),
@@ -50,7 +50,7 @@ class Mongo @Inject()(val reactiveMongoApi: ReactiveMongoApi) extends Controller
       "$unset" -> BSONDocument("name" -> 1))
 
     val futureResult = collection.flatMap(_.update(selector, modifier))
-    futureResult.map(_ => Ok("updated item " + name.head))
+    futureResult.map(_ => Ok("updated item " + name.headOption))
 
   }
 
