@@ -3,6 +3,7 @@ package models
 import play.api.data._
 import play.api.data.Forms._
 import scala.collection.mutable.ArrayBuffer
+import play.api.libs.json.Json
 
 case class Item(
                  name: String,
@@ -17,7 +18,7 @@ case class ItemDel( name: String)
 
 
 object JsonFormats {
-  import play.api.libs.json.Json
+
   implicit val itemFormat = Json.format[Item]
 }
 
